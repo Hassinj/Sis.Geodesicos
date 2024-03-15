@@ -115,18 +115,18 @@ def paraSAD_69(X, Y, Z):
     theta = math.atan((Z / p) * (a / b))
     senotheta = math.sin(theta)
     cossenotheta = math.cos(theta)
-    lat1 = math.atan((Z + ((el ** 2) * b * (senotheta ** 3))) / (p - ( (e ** 2) * a * (cossenotheta ** 3))))
-    lon1 = math.atan(Y / X)
+    lat1 = math.degrees(math.atan((Z + ((el ** 2) * b * (senotheta ** 3))) / (p - ( (e ** 2) * a * (cossenotheta ** 3)))))
+    lon1 = math.degrees(math.atan(Y / X))
     N = ((a) / math.sqrt(1 - ((e ** 2) * ((math.sin(lat) ** 2)))))
-    h1 = (p / (math.cos(lat))) - N
+    h1 = (p / (math.cos(math.radians(lat1)))) - N
     glat1 = int(lat1) # lat =40.123456, glat=40
     minlat1 = int((lat1 - (glat1)) * 60)  # (40.123456-40) * 60 = 0.123456 * 60 = 7.40736, minlat = 7
     seglat1 = ((((lat1 - glat1) * 60) - minlat1) * 60) # (((40.123456 - 40) * 60 ) - 7) * 60))  = 
     glon1 = int(lon1)
     minlon1 = int((lon1 - (glon1)) * 60)
     seglon1 = ((((lon1 - glon1) * 60) - minlon1) * 60)
-    print("Latitude: ", glat1,"° ", minlat1, "' ", seglat1,"'' ",  " \n Longitude: ", glon1,"° ", minlon1, "' ", seglon1,"'' ", "\nAltura: ", h1)
-    print("\n", lat1, "\n", lon1, "\n", theta, "\n", senotheta)
+    
+    print("Latitude: ", glat1,"° ", abs(minlat1), "' ", abs(seglat1),"'' ",  " \nLongitude: ", glon1,"° ", abs(minlon1), "' ", abs(seglon1),"'' ", "\nAltura: ", h1)
     return (lat1, lon1, h1)
     
 def paraWGS84(X, Y, Z):
@@ -137,21 +137,21 @@ def paraWGS84(X, Y, Z):
     e = c / a
     el = c / b
     p = math.sqrt((X ** 2) + (Y ** 2))
-    theta = math.radians(math.atan((Z * a) / p * b))
+    theta = math.atan((Z / p) * (a / b))
     senotheta = math.sin(theta)
     cossenotheta = math.cos(theta)
-    lat1 = math.atan((Z + ((el ** 2) * b * (senotheta ** 3)) / (p - ((e ** 2) * a * (cossenotheta ** 3)))))
-    lon1 = math.atan(Y / X)
+    lat1 = math.degrees(math.atan((Z + ((el ** 2) * b * (senotheta ** 3))) / (p - ( (e ** 2) * a * (cossenotheta ** 3)))))
+    lon1 = math.degrees(math.atan(Y / X))
     N = ((a) / math.sqrt(1 - ((e ** 2) * ((math.sin(lat) ** 2)))))
-    h1 = (p / (math.cos(lat))) - N
+    h1 = (p / (math.cos(math.radians(lat1)))) - N
     glat1 = int(lat1) # lat =40.123456, glat=40
     minlat1 = int((lat1 - (glat1)) * 60)  # (40.123456-40) * 60 = 0.123456 * 60 = 7.40736, minlat = 7
     seglat1 = ((((lat1 - glat1) * 60) - minlat1) * 60) # (((40.123456 - 40) * 60 ) - 7) * 60))  = 
     glon1 = int(lon1)
     minlon1 = int((lon1 - (glon1)) * 60)
     seglon1 = ((((lon1 - glon1) * 60) - minlon1) * 60)
-    print("Latitude: ", glat1,"° ", minlat1, "' ", seglat1,"'' ",  " \n Longitude: ", glon1,"° ", minlon1, "' ", seglon1,"'' ", "\nAltura: ", h1)
-
+    
+    print("Latitude: ", glat1,"° ", abs(minlat1), "' ", abs(seglat1),"'' ",  " \nLongitude: ", glon1,"° ", abs(minlon1), "' ", abs(seglon1),"'' ", "\nAltura: ", h1)
     return (lat1, lon1, h1)
 
 
@@ -163,23 +163,22 @@ def paraSIRGAS(X, Y, Z):
     e = c / a
     el = c / b
     p = math.sqrt((X ** 2) + (Y ** 2))
-    theta = math.radians(math.atan((Z * a) / p * b))
+    theta = math.atan((Z / p) * (a / b))
     senotheta = math.sin(theta)
     cossenotheta = math.cos(theta)
-    lat1 = math.atan((Z + ((el ** 2) * b * (senotheta ** 3)) / (p - ((e ** 2) * a * (cossenotheta ** 3)))))
-    lon1 = math.atan(Y / X)
+    lat1 = math.degrees(math.atan((Z + ((el ** 2) * b * (senotheta ** 3))) / (p - ( (e ** 2) * a * (cossenotheta ** 3)))))
+    lon1 = math.degrees(math.atan(Y / X))
     N = ((a) / math.sqrt(1 - ((e ** 2) * ((math.sin(lat) ** 2)))))
-    h1 = (p / (math.cos(lat))) - N
+    h1 = (p / (math.cos(math.radians(lat1)))) - N
     glat1 = int(lat1) # lat =40.123456, glat=40
     minlat1 = int((lat1 - (glat1)) * 60)  # (40.123456-40) * 60 = 0.123456 * 60 = 7.40736, minlat = 7
     seglat1 = ((((lat1 - glat1) * 60) - minlat1) * 60) # (((40.123456 - 40) * 60 ) - 7) * 60))  = 
     glon1 = int(lon1)
     minlon1 = int((lon1 - (glon1)) * 60)
     seglon1 = ((((lon1 - glon1) * 60) - minlon1) * 60)
-    print("Latitude: ", glat1,"° ", minlat1, "' ", seglat1,"'' ",  " \n Longitude: ", glon1,"° ", minlon1, "' ", seglon1,"'' ", "\nAltura: ", h1)
-
+    
+    print("Latitude: ", glat1,"° ", abs(minlat1), "' ", abs(seglat1),"'' ",  " \nLongitude: ", glon1,"° ", abs(minlon1), "' ", abs(seglon1),"'' ", "\nAltura: ", h1)
     return (lat1, lon1, h1)
-
 
 def paraCORREGO(X, Y, Z):
     a = 6378388.0
@@ -189,24 +188,22 @@ def paraCORREGO(X, Y, Z):
     e = c / a
     el = c / b
     p = math.sqrt((X ** 2) + (Y ** 2))
-    theta = math.radians(math.atan((Z * a) / p * b))
+    theta = math.atan((Z / p) * (a / b))
     senotheta = math.sin(theta)
     cossenotheta = math.cos(theta)
-    lat1 = math.atan((Z + ((el ** 2) * b * (senotheta ** 3)) / (p - ((e ** 2) * a * (cossenotheta ** 3)))))
-    lon1 = math.atan(Y / X)
+    lat1 = math.degrees(math.atan((Z + ((el ** 2) * b * (senotheta ** 3))) / (p - ( (e ** 2) * a * (cossenotheta ** 3)))))
+    lon1 = math.degrees(math.atan(Y / X))
     N = ((a) / math.sqrt(1 - ((e ** 2) * ((math.sin(lat) ** 2)))))
-    h1 = (p / (math.cos(lat))) - N
+    h1 = (p / (math.cos(math.radians(lat1)))) - N
     glat1 = int(lat1) # lat =40.123456, glat=40
     minlat1 = int((lat1 - (glat1)) * 60)  # (40.123456-40) * 60 = 0.123456 * 60 = 7.40736, minlat = 7
     seglat1 = ((((lat1 - glat1) * 60) - minlat1) * 60) # (((40.123456 - 40) * 60 ) - 7) * 60))  = 
     glon1 = int(lon1)
     minlon1 = int((lon1 - (glon1)) * 60)
     seglon1 = ((((lon1 - glon1) * 60) - minlon1) * 60)
-    print("Latitude: ", glat1,"° ", minlat1, "' ", seglat1,"'' ",  " \n Longitude: ", glon1,"° ", minlon1, "' ", seglon1,"'' ", "\nAltura: ", h1)
-
+    
+    print("Latitude: ", glat1,"° ", abs(minlat1), "' ", abs(seglat1),"'' ",  " \nLongitude: ", glon1,"° ", abs(minlon1), "' ", abs(seglon1),"'' ", "\nAltura: ", h1)
     return (lat1, lon1, h1)
-
-
 
 
 if sis == 1 and sis2 == 2:
@@ -266,7 +263,6 @@ if sis == 3 and sis2 == 1:
     X1 = result[0] + 67.35
     Y1 = result[1] - 3.88
     Z1 = result[2] + 38.22
-    print(X1, "\n",Y1, "\n",Z1, "\n")
     paraSAD_69(X1, Y1, Z1)
 	
 if sis == 3 and sis2 == 2:
