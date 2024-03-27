@@ -205,6 +205,8 @@ def paraCORREGO(X, Y, Z):
     print("Latitude: ", glat1,"° ", abs(minlat1), "' ", abs(seglat1),"'' ",  " \nLongitude: ", glon1,"° ", abs(minlon1), "' ", abs(seglon1),"'' ", "\nAltura: ", h1)
     return (lat1, lon1, h1)
 
+if sis == 1 and sis2 == 1:
+    SAD_69(lon, lat, h)
 
 if sis == 1 and sis2 == 2:
     result = SAD_69(lon, lat, h)
@@ -233,6 +235,9 @@ if sis == 2 and sis2 == 1:
     Y1 = result[1] - 4.37
     Z1 = result[2] + 38.52
     paraSAD_69(X1, Y1, Z1)
+
+if sis == 2 and sis2 == 2:
+    WGS84(lon, lat, h)
 
 if sis == 2 and sis2 == 3:
     result = WGS84(lon, lat, h)
@@ -277,6 +282,9 @@ if sis == 3 and sis2 == 2:
     Z2 = Z - 38.52
     paraWGS84(X2, Y2, Z2)
 
+if sis == 3 and sis2 == 3:
+    SIRGAS(lon, lat, h)
+
 if sis == 3 and sis2 == 4:
     SIRGAS(lon, lat, h)
     X1 = X + 67.35
@@ -319,3 +327,6 @@ if sis == 4 and sis2 == 3:
     Y2 = Y + 3.88
     Z2 = Z - 38.22
     paraSIRGAS(X2, Y2, Z2)
+
+if sis == 4 and sis2 == 4:
+    CORREGO(lon, lat, h)
