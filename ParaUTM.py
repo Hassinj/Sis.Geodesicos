@@ -135,9 +135,24 @@ B5 = ((N*(math.cos(lat)**5))/(120*(pll**5)))*(5-(18*(math.tan(lat)**2))+(math.ta
 
 #UTM para Geodesica
 Nl = I+(II*(p**2))+(III*(p**4))+(A6*(p**6))
+El = ((IV)*p)+((V)*(p**3))+((B5)*(p**5))
 p_graus = 57.295779513 #em graus decimais °
 alpha = A*a*(1-(e**2))
 lat_0 = (Nl*p_graus)/(alpha*K0)
-lat_
+beta = (B*a*(1-(e**2)))/2
+gamma = (C*a*(1-(e**2)))/4
+sigma = (D*a*(1-(e**2)))/6
+epsilon = (E*a*(1-(e**2)))/8
+xi = (F*a*(1-(e**2)))/10
+lat_i 
+lat_i+1 = (p_graus/alpha)*((Nl/K0)+(beta*math.sin(2*lat_i))-(gamma*math.sin(4*lat_i))+(sigma*math.sin(6*lat_i))-(epsilon*math.sin(8*lat_i))+(xi*math.sin(10*lat_i)))
+#latitude Final
+lat_nfinal = lat+((VII*(q**2))+(VIII*(q**4))-(Dl6*(q**6))) #segundo termo da equação em segundos de arco
+q = 0.000001*El
+VII = (math.tan(lat_nfinal)*(1+((el**2)*(math.cos(lat_nfinal)**2)))*(pll(10**12)))/((2(N**2))*(K0**2))
+VIII = (math.tan(lat_nfinal)/(24(N**4)))*(5+(3*(math.tan(lat_nfinal)**2))+(6*(el**2)*(math.cos(lat_nfinal)**2))-())
 
 
+#duvida
+delta_arco
+lat_i
